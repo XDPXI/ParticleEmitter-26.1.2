@@ -17,7 +17,7 @@ repositories {
 }
 
 description = "Particle Effects for WorldSeed"
-java.sourceCompatibility = JavaVersion.VERSION_21
+java.sourceCompatibility = JavaVersion.VERSION_25
 
 tasks.jar {
     manifest {
@@ -47,11 +47,11 @@ publishing {
 }
 
 dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:6.1.0")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:6.1.0")
 
-    compileOnly("net.minestom:minestom-snapshots:1f34e60ea6")
-    testImplementation("net.minestom:minestom-snapshots:1f34e60ea6")
+    compileOnly("net.minestom:minestom:2026.06.20-26.1.2")
+    testImplementation("net.minestom:minestom:2026.06.20-26.1.2")
 
     implementation("dev.hollowcube:mql:1.0.1")
 }

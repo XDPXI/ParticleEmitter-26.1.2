@@ -2,6 +2,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
+import net.hollowcube.mql.parser.MqlParseError;
 import net.minestom.server.particle.Particle;
 import org.junit.jupiter.api.Test;
 import net.worldseed.particleemitter.runtime.ParticleParser;
@@ -12,6 +13,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ParticleParserTest {
     static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
@@ -36,11 +39,11 @@ public class ParticleParserTest {
     }
 
     @Test
-    public void parseError() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public void parseError() throws IOException {
         File file = new File(root + "error.particle.json");
         FileInputStream fis = new FileInputStream(file);
         JsonReader reader = new JsonReader(new InputStreamReader(fis, "UTF-8"));
         JsonObject map = GSON.fromJson(reader, JsonObject.class);
-        ParticleEmitter emitter = ParticleParser.parse(Particle.DUST, 1000, map);
+        assertThrows(MqlParseError.class, () -> ParticleParser.parse(Particle.DUST, 1000, map));
     }
 }

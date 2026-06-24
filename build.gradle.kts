@@ -49,6 +49,7 @@ publishing {
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:6.1.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:6.1.0")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.13.4")
 
     compileOnly("net.minestom:minestom:2026.06.20-26.1.2")
     testImplementation("net.minestom:minestom:2026.06.20-26.1.2")
@@ -58,4 +59,5 @@ dependencies {
 
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
+    jvmArgs("--add-opens", "java.base/java.lang=ALL-UNNAMED")
 }

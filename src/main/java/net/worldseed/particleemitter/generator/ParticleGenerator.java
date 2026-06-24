@@ -27,11 +27,11 @@ public class ParticleGenerator {
 
     private static ParticlePacket buildDustTransition(double x, double y, double z, double size, double r, double g, double b, double r2, double g2, double b2) {
         Particle.DustColorTransition data = Particle.DUST_COLOR_TRANSITION.withProperties(new Color((int) (r * 255), (int) (g * 255), (int) (b * 255)), new Color((int) (r2 * 255), (int) (g2 * 255), (int) (b2 * 255)), (float) size);
-        return new ParticlePacket(data, true, x, y, z, 0, 0, 0, 0, 0);
+        return new ParticlePacket(data, true, false, x, y, z, 0, 0, 0, 0, 0);
     }
 
     private static ParticlePacket buildGeneric(Particle p, double x, double y, double z) {
-        return new ParticlePacket(p, true, x, y, z, 0, 0, 0, 0, 0);
+        return new ParticlePacket(p, true, false, x, y, z, 0, 0, 0, 0, 0);
     }
 
     private static ParticlePacket buildDirectional(Particle p, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
@@ -39,16 +39,16 @@ public class ParticleGenerator {
         double size = vec.length();
         vec = vec.normalize();
 
-        return new ParticlePacket(p, true, x, y, z, (float) vec.x(), (float) vec.y(), (float) vec.z(), (float) size, 0);
+        return new ParticlePacket(p, true, false, x, y, z, (float) vec.x(), (float) vec.y(), (float) vec.z(), (float) size, 0);
     }
 
     private static ParticlePacket buildDust(double x, double y, double z, double size, double r, double g, double b) {
         Particle.Dust data = Particle.DUST.withProperties(new Color((int) (r * 255), (int) (g * 255), (int) (b * 255)), (float) size);
-        return new ParticlePacket(data, true, x, y, z, 0, 0, 0, 0, 0);
+        return new ParticlePacket(data, true, false, x, y, z, 0, 0, 0, 0, 0);
     }
 
     private static ParticlePacket buildEffect(double x, double y, double z, double r, double g, double b) {
-        return new ParticlePacket(Particle.ENTITY_EFFECT, true, x, y, z, (float) r, (float) g, (float) b, 1, 0);
+        return new ParticlePacket(Particle.ENTITY_EFFECT, true, false, x, y, z, (float) r, (float) g, (float) b, 1, 0);
     }
 
     private static final Map<Vec, Double> noteColours = Map.ofEntries(
@@ -72,6 +72,6 @@ public class ParticleGenerator {
     }
 
     private static ParticlePacket buildNote(double x, double y, double z, double r, double g, double b) {
-        return new ParticlePacket(Particle.NOTE, true, x, y, z, (float) (calculateMinDiff(r, g, b)), 0, 0, 1, 0);
+        return new ParticlePacket(Particle.NOTE, true, false, x, y, z, (float) (calculateMinDiff(r, g, b)), 0, 0, 1, 0);
     }
 }

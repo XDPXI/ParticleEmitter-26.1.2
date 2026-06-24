@@ -14,7 +14,7 @@ import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
-public class ParticleManager {
+class ParticleManager {
     static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
     public static List<ParticleEmitter> getParticleEmitters(String particleName,int amount) throws FileNotFoundException, UnsupportedEncodingException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException{
